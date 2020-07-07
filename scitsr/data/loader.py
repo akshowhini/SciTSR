@@ -221,7 +221,7 @@ class TableDataset(Dataset):
     def get_vertex_features(self, vertexes):
         vertex_features = []
         for vertex in vertexes:
-            features = [v for v in vertex.get_features().values()]
+            features = list(vertex.features.values())
             vertex_features.append(features)
         return vertex_features
 
@@ -238,7 +238,7 @@ class TableDataset(Dataset):
         edge_features = []
         for i, j, _ in relations:
             edge = Edge(vertexes[i], vertexes[j])
-            features = [v for v in edge.get_features().values()]
+            features = list(edge.features.values())
             edge_features.append(features)
         return edge_features
 
